@@ -1,10 +1,9 @@
+import AppRoutes from "./routes";
 
-import './App.css';
 
 function App() {
-  return (
-    <div className="App">landing page</div>
-  )
+  return <AppRoutes />
 }
 
 export default App;
+
