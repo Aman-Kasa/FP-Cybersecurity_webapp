@@ -1,0 +1,210 @@
+{
+    "beginner": {
+      "questions": [
+        {
+          "question_number": 1,
+          "question": "What should you do if you receive a suspicious email?",
+          "options": {
+            "A": "Open it to check its contents",
+            "B": "Click any links inside to see what happens",
+            "C": "Report it as spam and do not click any links",
+            "D": "Forward it to your friends"
+          },
+          "answer": "C",
+          "feedback": "Phishing emails trick users into revealing sensitive information.",
+          "tip": "Always verify sender details and avoid clicking suspicious links."
+        },
+        {
+          "question_number": 2,
+          "question": "What is the best practice for creating passwords?",
+          "options": {
+            "A": "Use a short and easy-to-remember password",
+            "B": "Use the same password for all accounts",
+            "C": "Use a strong, unique password for each account",
+            "D": "Write down your passwords on a sticky note"
+          },
+          "answer": "C",
+          "feedback": "A strong password reduces the risk of hacking.",
+          "tip": "Use a password manager to store complex passwords safely."
+        },
+        {
+          "question_number": 3,
+          "question": "Which of these is an example of personal information you should not share online?",
+          "options": {
+            "A": "Your favorite movie",
+            "B": "Your pet’s name",
+            "C": "Your home address",
+            "D": "Your favorite food"
+          },
+          "answer": "C",
+          "feedback": "Sharing personal information online can lead to identity theft.",
+          "tip": "Be cautious about sharing personal details online."
+        },
+        {
+          "question_number": 4,
+          "question": "What does 'HTTPS' mean in a website URL?",
+          "options": {
+            "A": "The website is secure and encrypted",
+            "B": "The website is fast",
+            "C": "The website is offline",
+            "D": "The website does not load images"
+          },
+          "answer": "A",
+          "feedback": "HTTPS ensures that communication between your browser and the website is secure.",
+          "tip": "Always check for HTTPS when entering sensitive information online."
+        },
+        {
+          "question_number": 5,
+          "question": "What is a firewall used for?",
+          "options": {
+            "A": "To warm up your computer",
+            "B": "To protect your computer from unauthorized access",
+            "C": "To increase internet speed",
+            "D": "To store files securely"
+          },
+          "answer": "B",
+          "feedback": "A firewall helps block malicious network traffic.",
+          "tip": "Enable firewalls on your devices for extra security."
+        }
+      ]
+    },
+    "intermediate": {
+      "questions": [
+        {
+          "question_number": 1,
+          "question": "What is two-factor authentication (2FA)?",
+          "options": {
+            "A": "A way to log in using two different websites",
+            "B": "A method that requires two forms of verification",
+            "C": "A type of antivirus software",
+            "D": "A way to reset your password"
+          },
+          "answer": "B",
+          "feedback": "2FA adds an extra layer of security by requiring an additional verification step.",
+          "tip": "Enable 2FA on all your accounts for better security."
+        },
+        {
+          "question_number": 2,
+          "question": "Which of these is a sign of a phishing attack?",
+          "options": {
+            "A": "An email asking for urgent action with a suspicious link",
+            "B": "A verified email from your bank",
+            "C": "A message from a trusted friend",
+            "D": "An online advertisement for a discount"
+          },
+          "answer": "A",
+          "feedback": "Phishing emails often create urgency to trick victims.",
+          "tip": "Always verify emails and avoid clicking unknown links."
+        },
+        {
+          "question_number": 3,
+          "question": "What is a VPN (Virtual Private Network)?",
+          "options": {
+            "A": "A tool for browsing the web anonymously",
+            "B": "A type of firewall",
+            "C": "A software that scans for malware",
+            "D": "A kind of antivirus software"
+          },
+          "answer": "A",
+          "feedback": "A VPN hides your online activity by encrypting your internet connection.",
+          "tip": "Use a VPN when connected to public Wi-Fi for added privacy."
+        },
+        {
+          "question_number": 4,
+          "question": "Which of these is NOT a good password security practice?",
+          "options": {
+            "A": "Use a combination of letters, numbers, and symbols",
+            "B": "Change your password every 6 months",
+            "C": "Share your password with a trusted friend",
+            "D": "Enable two-factor authentication"
+          },
+          "answer": "C",
+          "feedback": "Sharing passwords can compromise security.",
+          "tip": "Never share your passwords, and always use secure methods to store them."
+        },
+        {
+          "question_number": 5,
+          "question": "What is malware?",
+          "options": {
+            "A": "A form of malicious software designed to damage or access systems without permission",
+            "B": "A type of antivirus software",
+            "C": "A secure way to encrypt files",
+            "D": "A device to speed up your computer"
+          },
+          "answer": "A",
+          "feedback": "Malware can cause significant damage to your system or steal sensitive data.",
+          "tip": "Keep your software up to date and use antivirus software to protect against malware."
+        }
+      ]
+    },
+    "advanced": {
+      "questions": [
+        {
+          "question_number": 1,
+          "question": "What is the purpose of SSL/TLS encryption?",
+          "options": {
+            "A": "To protect files from being copied",
+            "B": "To encrypt communication between a web browser and a server",
+            "C": "To monitor website traffic",
+            "D": "To optimize web server performance"
+          },
+          "answer": "B",
+          "feedback": "SSL/TLS ensures secure communication over the internet by encrypting data in transit.",
+          "tip": "Always ensure websites use SSL/TLS, especially when submitting sensitive data."
+        },
+        {
+          "question_number": 2,
+          "question": "What is the concept of 'least privilege' in cybersecurity?",
+          "options": {
+            "A": "Granting users access to only the resources they absolutely need",
+            "B": "Allowing all users to access all resources",
+            "C": "Removing passwords for ease of access",
+            "D": "Allowing users to change their access rights anytime"
+          },
+          "answer": "A",
+          "feedback": "The 'least privilege' principle reduces the risk of unauthorized access to sensitive information.",
+          "tip": "Limit access to information based on roles and responsibilities."
+        },
+        {
+          "question_number": 3,
+          "question": "What is a man-in-the-middle (MITM) attack?",
+          "options": {
+            "A": "A cyberattack where the attacker intercepts and alters communication between two parties",
+            "B": "A phishing attack aimed at stealing credentials",
+            "C": "A virus that replicates itself across networks",
+            "D": "An attack that spreads through USB devices"
+          },
+          "answer": "A",
+          "feedback": "MITM attacks allow hackers to secretly monitor and manipulate communication.",
+          "tip": "Use encryption like HTTPS to prevent MITM attacks."
+        },
+        {
+          "question_number": 4,
+          "question": "What is the purpose of a penetration test (pentest)?",
+          "options": {
+            "A": "To evaluate the security of a network by attempting to exploit vulnerabilities",
+            "B": "To remove viruses from a system",
+            "C": "To develop software applications",
+            "D": "To update system firmware"
+          },
+          "answer": "A",
+          "feedback": "Pentests help identify and address vulnerabilities before attackers can exploit them.",
+          "tip": "Conduct regular penetration tests to assess your organization's security posture."
+        },
+        {
+          "question_number": 5,
+          "question": "What is a zero-day vulnerability?",
+          "options": {
+            "A": "A software vulnerability that is publicly known but not yet fixed",
+            "B": "A vulnerability that requires no password to exploit",
+            "C": "A vulnerability discovered by attackers after release of software",
+            "D": "A flaw in hardware that causes system crashes"
+          },
+          "answer": "A",
+          "feedback": "Zero-day vulnerabilities are critical because there are no patches or fixes available when they are discovered.",
+          "tip": "Implement security measures like patching and monitoring to mitigate zero-day risks."
+        }
+      ]
+    }
+  }
+  
