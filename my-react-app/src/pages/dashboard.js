@@ -981,27 +981,223 @@ export default Dashboard;
 
 // export default Dashboard;
 
+// import { useNavigate } from "react-router-dom";
+// import { logoutUser } from "../FIREBASE/components/auth";
+// import { useState, useEffect } from "react";
+
+// function Dashboard({ user }) {
+//   const navigate = useNavigate();
+//   const [quizData, setQuizData] = useState({});
+//   const [activeSection, setActiveSection] = useState("dashboard");
+//   const [selectedDifficulty, setSelectedDifficulty] = useState("beginner");
+//   const [currentQuestion, setCurrentQuestion] = useState(0);
+//   const [score, setScore] = useState(0);
+//   const [quizCompleted, setQuizCompleted] = useState(false);
+//   const [quizStarted, setQuizStarted] = useState(false);
+//   const [userAnswer, setUserAnswer] = useState(null);
+
+//   useEffect(() => {
+//     fetch("/quiz_questions.json")
+//       .then((response) => response.json())
+//       .then((data) => setQuizData(data))
+//       .catch((error) => console.error("Error loading quiz data:", error));
+//   }, []);
+
+//   async function handleLogout() {
+//     try {
+//       await logoutUser();
+//       navigate("/login");
+//     } catch (error) {
+//       console.error("Logout failed:", error.message);
+//     }
+//   }
+
+//   function startQuiz() {
+//     setQuizStarted(true);
+//     setCurrentQuestion(0);
+//     setScore(0);
+//     setQuizCompleted(false);
+//     setUserAnswer(null);
+//   }
+
+//   function handleSubmitAnswer() {
+//     const currentQuiz = quizData[selectedDifficulty]?.questions[currentQuestion];
+//     if (!currentQuiz || userAnswer === null) return;
+
+//     if (userAnswer === currentQuiz.answer) {
+//       setScore((prevScore) => prevScore + 1);
+//     }
+    
+//     if (currentQuestion + 1 < quizData[selectedDifficulty]?.questions.length) {
+//       setCurrentQuestion((prev) => prev + 1);
+//       setUserAnswer(null);
+//     } else {
+//       setQuizCompleted(true);
+//     }
+//   }
+
+//   return (
+//     <div className="container">
+//       <nav className="sidebar">
+//         <h2>CyberShield</h2>
+//         <ul>
+//           <li className={activeSection === "dashboard" ? "active" : ""} onClick={() => setActiveSection("dashboard")}>Dashboard</li>
+//           <li className={activeSection === "lessons" ? "active" : ""} onClick={() => setActiveSection("lessons")}>Lessons</li>
+//           <li className={activeSection === "simulations" ? "active" : ""} onClick={() => setActiveSection("simulations")}>Simulations</li>
+//           <li className={activeSection === "quizzes" ? "active" : ""} onClick={() => setActiveSection("quizzes")}>Quizzes</li>
+//         </ul>
+//         <button className="logout-button" onClick={handleLogout}>Logout</button>
+//       </nav>
+
+//       <div className="main-content">
+//         {activeSection === "dashboard" && (
+//           <section>
+//             <h2>Welcome, {user?.email}!</h2>
+//             <p>This is your cybersecurity dashboard.</p>
+//           </section>
+//         )}
+
+//         {activeSection === "quizzes" && (
+//           <section>
+//             <h2>Cybersecurity Quiz</h2>
+//             {!quizStarted ? (
+//               <div>
+//                 <p>You're starting the {selectedDifficulty} quiz.</p>
+//                 <p>Get ready for some questions to test your knowledge.</p>
+//                 <button className="start-button" onClick={startQuiz}>Start Quiz</button>
+//               </div>
+//             ) : !quizCompleted ? (
+//               <div>
+//                 <h3>Question {currentQuestion + 1}: {quizData[selectedDifficulty]?.questions[currentQuestion]?.question}</h3>
+//                 <ul>
+//                   {Object.entries(quizData[selectedDifficulty]?.questions[currentQuestion]?.options || {}).map(([key, value]) => (
+//                     <li key={key} onClick={() => setUserAnswer(key)} className={userAnswer === key ? "selected" : ""}>
+//                       {key}: {value}
+//                     </li>
+//                   ))}
+//                 </ul>
+//                 <button className="submit-button" onClick={handleSubmitAnswer}>Submit</button>
+//               </div>
+//             ) : (
+//               <div>
+//                 <p>Your Score: {score}/{quizData[selectedDifficulty].questions.length}</p>
+//                 {selectedDifficulty !== "advanced" && (
+//                   <button className="start-button" onClick={() => {
+//                     setSelectedDifficulty(
+//                       selectedDifficulty === "beginner" ? "intermediate" : "advanced"
+//                     );
+//                     setQuizStarted(false);
+//                   }}>
+//                     Proceed to {selectedDifficulty === "beginner" ? "Intermediate" : "Advanced"} Quiz
+//                   </button>
+//                 )}
+//               </div>
+//             )}
+//           </section>
+//         )}
+//       </div>
+
+//       <style>
+//         {`
+//           .container {
+//             display: flex;
+//             height: 100vh;
+//           }
+//           .sidebar {
+//             width: 250px;
+//             background: #2c3e50;
+//             color: white;
+//             padding: 20px;
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: space-between;
+//           }
+//           .sidebar h2 {
+//             text-align: center;
+//           }
+//           .sidebar ul {
+//             list-style: none;
+//             padding: 0;
+//             flex-grow: 1;
+//           }
+//           .sidebar li {
+//             padding: 10px;
+//             cursor: pointer;
+//             color: black;
+//           }
+//           .sidebar li:hover, .sidebar .active {
+//             background: rgb(10, 235, 197);
+//             font-weight: bold;
+//           }
+//           .main-content {
+//             flex-grow: 1;
+//             padding: 20px;
+//             background: #ecf0f1;
+//           }
+//           .logout-button, .start-button, .submit-button {
+//             padding: 10px 20px;
+//             border: none;
+//             color: white;
+//             cursor: pointer;
+//             font-size: 16px;
+//             border-radius: 5px;
+//             transition: background 0.3s;
+//           }
+//           .logout-button {
+//             background: #e74c3c;
+//           }
+//           .logout-button:hover {
+//             background: #c0392b;
+//           }
+//           .start-button {
+//             background: #2980b9;
+//           }
+//           .start-button:hover {
+//             background: #1f6690;
+//           }
+//           .submit-button {
+//             background: #27ae60;
+//           }
+//           .submit-button:hover {
+//             background: #1d8a4d;
+//           }
+//           ul {
+//             list-style: none;
+//             padding: 0;
+//           }
+//           li {
+//             padding: 8px;
+//             cursor: pointer;
+//             background: #f4f4f4;
+//             margin: 5px 0;
+//             border-radius: 5px;
+//           }
+//           li:hover {
+//             background: #ddd;
+//           }
+//           .selected {
+//             background: #27ae60;
+//             color: white;
+//           }
+//         `}
+//       </style>
+//     </div>
+//   );
+// }
+
+// export default Dashboard;
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../FIREBASE/components/auth";
-import { useState, useEffect } from "react";
+import DashboardSidebar from "./components/dashboardSidebar";
+import Quizzes from "./components/quizzes";
+import Lessons from "./components/lessons";
+import Simulations from "./components/simulations";
 
 function Dashboard({ user }) {
   const navigate = useNavigate();
-  const [quizData, setQuizData] = useState({});
   const [activeSection, setActiveSection] = useState("dashboard");
-  const [selectedDifficulty, setSelectedDifficulty] = useState("beginner");
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [userAnswer, setUserAnswer] = useState(null);
-
-  useEffect(() => {
-    fetch("/quiz_questions.json")
-      .then((response) => response.json())
-      .then((data) => setQuizData(data))
-      .catch((error) => console.error("Error loading quiz data:", error));
-  }, []);
 
   async function handleLogout() {
     try {
@@ -1012,43 +1208,9 @@ function Dashboard({ user }) {
     }
   }
 
-  function startQuiz() {
-    setQuizStarted(true);
-    setCurrentQuestion(0);
-    setScore(0);
-    setQuizCompleted(false);
-    setUserAnswer(null);
-  }
-
-  function handleSubmitAnswer() {
-    const currentQuiz = quizData[selectedDifficulty]?.questions[currentQuestion];
-    if (!currentQuiz || userAnswer === null) return;
-
-    if (userAnswer === currentQuiz.answer) {
-      setScore((prevScore) => prevScore + 1);
-    }
-    
-    if (currentQuestion + 1 < quizData[selectedDifficulty]?.questions.length) {
-      setCurrentQuestion((prev) => prev + 1);
-      setUserAnswer(null);
-    } else {
-      setQuizCompleted(true);
-    }
-  }
-
   return (
     <div className="container">
-      <nav className="sidebar">
-        <h2>CyberShield</h2>
-        <ul>
-          <li className={activeSection === "dashboard" ? "active" : ""} onClick={() => setActiveSection("dashboard")}>Dashboard</li>
-          <li className={activeSection === "lessons" ? "active" : ""} onClick={() => setActiveSection("lessons")}>Lessons</li>
-          <li className={activeSection === "simulations" ? "active" : ""} onClick={() => setActiveSection("simulations")}>Simulations</li>
-          <li className={activeSection === "quizzes" ? "active" : ""} onClick={() => setActiveSection("quizzes")}>Quizzes</li>
-        </ul>
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
-      </nav>
-
+      <DashboardSidebar activeSection={activeSection} setActiveSection={setActiveSection} handleLogout={handleLogout} />
       <div className="main-content">
         {activeSection === "dashboard" && (
           <section>
@@ -1056,135 +1218,43 @@ function Dashboard({ user }) {
             <p>This is your cybersecurity dashboard.</p>
           </section>
         )}
-
-        {activeSection === "quizzes" && (
-          <section>
-            <h2>Cybersecurity Quiz</h2>
-            {!quizStarted ? (
-              <div>
-                <p>You're starting the {selectedDifficulty} quiz.</p>
-                <p>Get ready for some questions to test your knowledge.</p>
-                <button className="start-button" onClick={startQuiz}>Start Quiz</button>
-              </div>
-            ) : !quizCompleted ? (
-              <div>
-                <h3>Question {currentQuestion + 1}: {quizData[selectedDifficulty]?.questions[currentQuestion]?.question}</h3>
-                <ul>
-                  {Object.entries(quizData[selectedDifficulty]?.questions[currentQuestion]?.options || {}).map(([key, value]) => (
-                    <li key={key} onClick={() => setUserAnswer(key)} className={userAnswer === key ? "selected" : ""}>
-                      {key}: {value}
-                    </li>
-                  ))}
-                </ul>
-                <button className="submit-button" onClick={handleSubmitAnswer}>Submit</button>
-              </div>
-            ) : (
-              <div>
-                <p>Your Score: {score}/{quizData[selectedDifficulty].questions.length}</p>
-                {selectedDifficulty !== "advanced" && (
-                  <button className="start-button" onClick={() => {
-                    setSelectedDifficulty(
-                      selectedDifficulty === "beginner" ? "intermediate" : "advanced"
-                    );
-                    setQuizStarted(false);
-                  }}>
-                    Proceed to {selectedDifficulty === "beginner" ? "Intermediate" : "Advanced"} Quiz
-                  </button>
-                )}
-              </div>
-            )}
-          </section>
-        )}
+        {activeSection === "quizzes" && <Quizzes />}
+        {activeSection === "lessons" && <Lessons />}
+        {activeSection === "simulations" && <Simulations />}
       </div>
-
-      <style>
-        {`
-          .container {
-            display: flex;
-            height: 100vh;
-          }
-          .sidebar {
-            width: 250px;
-            background: #2c3e50;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-          .sidebar h2 {
-            text-align: center;
-          }
-          .sidebar ul {
-            list-style: none;
-            padding: 0;
-            flex-grow: 1;
-          }
-          .sidebar li {
-            padding: 10px;
-            cursor: pointer;
-            color: black;
-          }
-          .sidebar li:hover, .sidebar .active {
-            background: rgb(10, 235, 197);
-            font-weight: bold;
-          }
-          .main-content {
-            flex-grow: 1;
-            padding: 20px;
-            background: #ecf0f1;
-          }
-          .logout-button, .start-button, .submit-button {
-            padding: 10px 20px;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            transition: background 0.3s;
-          }
-          .logout-button {
-            background: #e74c3c;
-          }
-          .logout-button:hover {
-            background: #c0392b;
-          }
-          .start-button {
-            background: #2980b9;
-          }
-          .start-button:hover {
-            background: #1f6690;
-          }
-          .submit-button {
-            background: #27ae60;
-          }
-          .submit-button:hover {
-            background: #1d8a4d;
-          }
-          ul {
-            list-style: none;
-            padding: 0;
-          }
-          li {
-            padding: 8px;
-            cursor: pointer;
-            background: #f4f4f4;
-            margin: 5px 0;
-            border-radius: 5px;
-          }
-          li:hover {
-            background: #ddd;
-          }
-          .selected {
-            background: #27ae60;
-            color: white;
-          }
-        `}
-      </style>
     </div>
   );
 }
 
 export default Dashboard;
 
+// CSS Styling
+const styles = `
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background: #ecf0f1;
+  }
+  section {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    color: #2c3e50;
+  }
+  p {
+    font-size: 16px;
+    color: #333;
+  }
+`;
 
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
