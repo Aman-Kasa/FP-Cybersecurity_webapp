@@ -120,6 +120,7 @@ const styles = `
   }
   .main-content {
     flex-grow: 1;
+    margin-left: 290px;
     padding: 20px;
     background: #ecf0f1;
   }

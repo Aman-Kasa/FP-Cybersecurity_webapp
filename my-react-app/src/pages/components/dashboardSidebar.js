@@ -18,7 +18,11 @@ function DashboardSidebar({ activeSection, setActiveSection, handleLogout }) {
   // CSS Styling
   const styles = `
     .sidebar {
+      position: fixed;
       width: 250px;
+      height: 100vh;
+      top: 0;
+      left: 0;
       background: #2c3e50;
       color: black;
       padding: 20px;
@@ -37,7 +41,11 @@ function DashboardSidebar({ activeSection, setActiveSection, handleLogout }) {
     }
     .sidebar li {
       padding: 10px;
+      margin-bottom: 10px;
       cursor: pointer;
+      text-align: left;
+      width: 100%;
+      border-radius: 15px 0 0 15px;
     }
     .sidebar li:hover, .sidebar .active {
       background: rgb(10, 235, 197);
@@ -51,6 +59,7 @@ function DashboardSidebar({ activeSection, setActiveSection, handleLogout }) {
       cursor: pointer;
       font-size: 16px;
       border-radius: 5px;
+      margin-bottom: 40px;
     }
     .logout-button:hover {
       background: #c0392b;
