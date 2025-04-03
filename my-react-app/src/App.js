@@ -1,8 +1,13 @@
-import AppRoutes from "./routes";
-
+import React from 'react';
+import LandingPage from './components/LandingPage';
+import './App.css';
 
 function App() {
-  return <AppRoutes />
+  return (
+    <div className="App">
+      <LandingPage />
+    </div>
+  );
 }
 
 export default App;
