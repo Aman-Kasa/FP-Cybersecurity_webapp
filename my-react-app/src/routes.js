@@ -33,6 +33,7 @@ import LandingPage from "./pages/landingPage";
 import Login from "./pages/login";
 import Register from "./pages/registration";
 import Dashboard from "./pages/dashboard";
+import Quizzes from "./pages/components/quizzes";
 import { checkAuthState } from "./FIREBASE/components/auth";
 import { getAuth, updateProfile } from "firebase/auth"; // Import these
 
@@ -61,6 +62,7 @@ const AppRoutes = () => {
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={!user ? <Register /> : <Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
+        <Route path="/quizzes" element={user ? <Quizzes /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );

@@ -147,6 +147,7 @@
 //   });
 // };
 
+
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
@@ -159,10 +160,16 @@ import { app } from "../config/firebase";
 
 const auth = getAuth(app);
 
+// ✅ Listen for Auth State Changes (Fix for `auth.currentUser` being null)
+onAuthStateChanged(auth, (user) => {
+  console.log("Auth State Changed:", user); // This will log user when auth state updates
+});
+
 // ✅ Sign In Function
 export const loginUser = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log("User signed in:", userCredential.user); // Debugging log
     return userCredential.user;
   } catch (error) {
     console.error("Login Error:", error.message);
@@ -174,16 +181,17 @@ export const loginUser = async (email, password) => {
 export const registerUser = async (email, password, fullName) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    
+    const user = userCredential.user;
+
+    // Ensure the user is properly initialized
+    await user.reload();
+
     // Update profile with full name
-    await updateProfile(auth.currentUser, { displayName: fullName });
+    await updateProfile(user, { displayName: fullName });
 
-    // Reload the user to ensure updated data is reflected
-    await auth.currentUser.reload();
-    
-    console.log("Updated User:", auth.currentUser); // Debugging log
+    console.log("Updated User:", user); // Debugging log
 
-    return auth.currentUser; // Return updated user
+    return user;
   } catch (error) {
     console.error("Registration Error:", error.message);
     throw error;
@@ -201,7 +209,7 @@ export const logoutUser = async () => {
   }
 };
 
-// ✅ Listen for Authentication State Changes
+// ✅ Listen for Authentication State Changes (Callback function)
 export const checkAuthState = (callback) => {
   return onAuthStateChanged(auth, (user) => {
     try {
