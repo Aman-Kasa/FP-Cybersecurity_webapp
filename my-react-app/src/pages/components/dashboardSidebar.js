@@ -23,7 +23,7 @@ function DashboardSidebar({ activeSection, setActiveSection, handleLogout }) {
       height: 100vh;
       top: 0;
       left: 0;
-      background: #2c3e50;
+      background:rgb(76, 50, 135);
       color: black;
       padding: 20px;
       display: flex;

@@ -5,11 +5,11 @@ const LandingPage = () => {
 
   return (
     <div>
-      <h1>Welcome to CyberShield</h1>
+      <h1>Welcome to Cybersecurity Awareness</h1>
       <button onClick={() => navigate("/login")}>Login</button>
       <button onClick={() => navigate("/register")}>Register</button>
     </div>
   );
 };
 
-export default LandingPage;
+export default LandingPage;  
