@@ -46,6 +46,7 @@ function DashboardSidebar({ activeSection, setActiveSection, handleLogout }) {
       text-align: left;
       width: 100%;
       border-radius: 15px 0 0 15px;
+      background: rgb(187, 241, 243);
     }
     .sidebar li:hover, .sidebar .active {
       background: rgb(10, 235, 197);
