@@ -1,4 +1,4 @@
-![Cybersecurity Awareness Web app](https://www.darkreading.com/vulnerabilities-threats/current-cybersecurity-landscape-new-threats-same-security-mistakes)
+![Cybersecurity Awareness Web app](https://th.bing.com/th/id/OIP.rd1gGQ4YqM-35Rwuv9iBewHaE7?w=626&h=417&rs=1&pid=ImgDetMain)
  Cybersecurity awareness web app
 
  # Getting Started with Create React App
