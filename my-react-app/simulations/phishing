@@ -1,0 +1,20 @@
+const phishingQuestions = [
+  { question: "This email asks for my password. Is it safe?", answer: "No" },
+  { question: "This link says 'click here' but points to an unknown site. Should I click?", answer: "No" }
+];
+"""
+const PhishingQuiz = () => {
+  return (
+    <div className="text-center mt-8">
+      {phishingQuestions.map((q, index) => (
+        <div key={index} className="mb-4">
+          <p className="text-xl">{q.question}</p>
+          <button className="p-2 m-2 bg-red-500 text-white rounded">No</button>
+          <button className="p-2 m-2 bg-green-500 text-white rounded">Yes</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default PhishingQuiz;

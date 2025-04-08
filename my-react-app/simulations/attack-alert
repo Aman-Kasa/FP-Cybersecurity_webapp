@@ -1,0 +1,24 @@
+import { useState } from "react";
+
+const CyberAttackSimulation = () => {
+  const [alert, setAlert] = useState(false);
+
+  return (
+    <div className="text-center mt-8">
+      <button 
+        onClick={() => setAlert(true)} 
+        className="px-4 py-2 bg-red-600 text-white rounded"
+      >
+        Simulate Attack
+      </button>
+
+      {alert && (
+        <div className="mt-4 p-4 bg-yellow-400 text-black rounded">
+          <p>Warning! A phishing attempt detected. Do not click unknown links.</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CyberAttackSimulation;
